@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="svg-style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>SVG</title>
+</head>
+<body>
+    <h1>SVG</h1>
+    <button type="button" class="btn btn-outline-dark" style="margin: 20px" href=><a href="index.html">Home</a></button>
+    <svg style="background-color: #aaaaaaaa; height: 100vh; width:100vw">
+        <circle id="circle" cx="320" cy="420" r="320px" fill="#222222" stroke="black" stroke-width="3"/>
+        <rect id="MinutenZeiger" width="300px" height="20" x="320" y="400" fill="#bbbbbb"/>
+        <rect id="StundenZeiger" width="200px" height="20" x="320" y="400" fill="#bbbbbb"/>
+        <circle id="circle" cx="320" cy="420" r="30px" fill="#bbbbbb" stroke="black" stroke-width="3"/>
+
+        <polygon id="star" points="900,210 840,398 990,278 810,278 960,398"
+  style="fill:black;stroke:rgb(8, 255, 222);stroke-width:5;fill-rule:evenodd;" />
+  <circle id="circle" cx="900" cy="310" r="10px" fill="#000000" stroke="black" stroke-width="3"/>
+
+    </svg>
+
+
+
+    <script>
+        let y = 0;
+        let x = document.getElementById("MinutenZeiger");
+        window.setInterval(function() {
+            y += 1;
+            x.setAttribute('transform', 'rotate(' + y + ', 320,410)');
+        }, 10);
+
+        let y2 = 0;
+        let x2 = document.getElementById("StundenZeiger");
+        window.setInterval(function() {
+            y2 += 1;
+            x2.setAttribute('transform', 'rotate(' + y2 + ', 320,410)');
+        }, 50);
+
+        let y3 = 0;
+        let x3 = document.getElementById("star");
+        window.setInterval(function() {
+            y3 -= 1;
+            x3.setAttribute('transform', 'rotate(' + y3 + ', 900,310)');
+        }, 1);
+    </script>
+</body>
+</html>
