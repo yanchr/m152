@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link rel="stylesheet" href="scrollSytel.css">
+
+
+
+    <title>JavaScript</title>
+</head>
+
+<body>
+    <button type="button" class="btn btn-outline-dark" href=><a href="index.html">Home</a></button>
+
+
+    <script>
+        AOS.init();
+        maindiv = element = document.createElement("div");
+        title = createElement("h1", "h1", "JavaScript");
+        countElements = 0;
+        classCounter = 0;
+        document.body.appendChild(maindiv);
+
+        lastHello = createElements(22, "p", "hello", "Moin")
+
+         document.addEventListener("scroll", doOnScroll)
+    
+
+        function createElements(howMany, elementName, id, innerHtml) {
+            oldElements = countElements;
+            for (i = countElements + 1; i <= howMany + oldElements; i++) {
+                lastElement = createElement(elementName, id + i, innerHtml + i);
+                countElements = i;
+
+                 addanchorPlacement(); // <- does not work
+            }
+            return lastElement;
+        }
+
+        function createElement(elementName, id, innerHtml) {
+            element = document.createElement(elementName);
+            element.id = id;
+            element.innerHTML = innerHtml;
+            maindiv.appendChild(element);
+            return element;
+        }
+
+        function doOnScroll() {
+            if (window.scrollY + 10000 > document.getElementsByTagName('HTML')[0].outerHTML.length) {
+                createElements(1, "p", "hello", "Moin");
+                // console.log(window.scrollY + " : " +  document.getElementsByTagName('HTML')[0].outerHTML.length)
+            }
+        }
+
+        function addanchorPlacement() {
+            if (countElements % 25 == 0) {
+                classCounter++;
+               anchorPlacement1 = differentfadeIns(classCounter);
+                divInAnchor1 = document.createElement("div");
+                anchorPlacement1.classList.add("fadeInBox" + classCounter, "allFadeInBoxes")
+                divInAnchor1.innerHTML = "This is the " + classCounter + ". checkpoint. (" + countElements + ")";
+                anchorPlacement1.appendChild(divInAnchor1);
+                maindiv.appendChild(anchorPlacement1);
+
+                if(classCounter > 8){
+                    classCounter = 0;
+                }
+            }
+        }
+
+        function differentfadeIns(classCounter){
+            anchorPlacement1 = document.createElement("div");
+            if(classCounter == 1) {
+                anchorPlacement1.dataset.aos = "fade-up";
+                anchorPlacement1.dataset.aosAnchorPlacement = "center-bottom";
+                anchorPlacement1.dataset.aosDuration = "1000";
+            }
+            if(classCounter == 2) {
+                anchorPlacement1.dataset.aos = "fade-down-left";
+            }
+            if(classCounter == 3) {
+                anchorPlacement1.dataset.aos = "flip-up";
+            }
+            if(classCounter == 4) {
+                anchorPlacement1.dataset.aos = "zoom-in";
+            }
+            if(classCounter == 5) {
+                anchorPlacement1.dataset.aos = "zoom-out";
+                anchorPlacement1.dataset.aosDuration = "1000";
+            }
+            if(classCounter == 6) {
+                anchorPlacement1.dataset.aos = "fade-down";
+                anchorPlacement1.dataset.aosEasing = "linear";
+                anchorPlacement1.dataset.aosDuration = "1500";
+            }
+            if(classCounter == 7) {
+                anchorPlacement1.dataset.aos = "fade-left";
+                anchorPlacement1.dataset.aosDuration = "1000";
+            }
+            if(classCounter == 8) {
+                anchorPlacement1.dataset.aos = "flip-left";
+                anchorPlacement1.dataset.aosEasing = "ease-out-cubic";
+                anchorPlacement1.dataset.aosDuration = "2000";
+            }
+            if(classCounter == 9) {
+                anchorPlacement1.dataset.aos = "zoom-out-down";
+                anchorPlacement1.dataset.aosAnchorPlacement = "center-bottom";
+                anchorPlacement1.dataset.aosDuration = "1000";
+            }
+            
+               
+            return anchorPlacement1
+        }
+    </script>
+
+    <div data-aos="fade-up" id="anchorTest1">
+        <div>moin</div>
+        <div>moin</div>
+    </div>
+
+    <div data-aos="fade-up" id="anchorTest2"
+     data-aos-anchor-placement="bottom-center"
+     data-aos-duration="2000">
+</div>
+    <div>moin</div>
+    <div>moin</div>
+    <div>moin</div>
+    <div>moin</div>
+</body>
+
+</html>
