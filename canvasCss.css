@@ -1,0 +1,11 @@
+#myCanvas1{
+    border: 1px solid black; 
+    position: absolute; 
+    top: 200px;
+}
+
+.inputs{
+    position: absolute;
+    top: 50px;
+    left: 150px;
+}
