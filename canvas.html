@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-        <link rel="stylesheet" href="canvasCss.css">
+    <link rel="stylesheet" href="canvasCss.css">
     <title>CNAVAS</title>
 </head>
 
@@ -29,29 +29,19 @@
             <input type="number" id="ySpeedInput" placeholder="Y-Speed">
             <button id="ySpeedBtn" class="btn btn-outline-dark">setYSpeed</button>
         </div>
+        <div>
+            <button id="clearMyCanvas1" class="btn btn-outline-dark">Clear</button>
+        </div>
     </div>
     <script>
-          firstCanvas();
+        firstCanvas();
         function firstCanvas() {
-        squareSizeBtn = document.getElementById("squareSizeBtn");
-        xSpeedBtn = document.getElementById("xSpeedBtn");
-        ySpeedBtn = document.getElementById("ySpeedBtn");
-
-        squareSizeBtn.addEventListener("click", () => {
-            squareSize = document.getElementById("squareSizeInput").value;
-        })
-        xSpeedBtn.addEventListener("click", () => {
-            randomXSpeed = document.getElementById("xSpeedInput").value;
-        })
-        ySpeedBtn.addEventListener("click", () => {
-            randomYSpeed = document.getElementById("ySpeedInput").value;
-        })
-          let squareSize = 50;
-            let randomXSpeed = 8;
-            let randomYSpeed = 4;
-      
             let ctx = document.getElementById("myCanvas1").getContext("2d");
-            ctx.co
+            squareSizeBtn = document.getElementById("squareSizeBtn");
+            xSpeedBtn = document.getElementById("xSpeedBtn");
+            ySpeedBtn = document.getElementById("ySpeedBtn");
+            clearCanvasBtn = document.getElementById("clearMyCanvas1");
+
             let x = 200;
             let y = 200;
             let red = 0;
@@ -59,7 +49,26 @@
             let blue = 0;
             let turnX = false;
             let turnY = false;
+            let squareSize = 50;
+            let randomXSpeed = 8;
+            let randomYSpeed = 4;
+            let canvasSize = 500;
             drawSquar();
+
+            squareSizeBtn.addEventListener("click", () => {
+                squareSize = document.getElementById("squareSizeInput").value;
+            })
+            xSpeedBtn.addEventListener("click", () => {
+                randomXSpeed = document.getElementById("xSpeedInput").value;
+            })
+            ySpeedBtn.addEventListener("click", () => {
+                randomYSpeed = document.getElementById("ySpeedInput").value;
+            })
+
+            clearCanvasBtn.addEventListener("click", () => {
+                ctx.clearRect(0, 0, canvasSize, canvasSize);
+            })
+       
 
 
             function getRandomInt(max) {
@@ -69,14 +78,14 @@
             function drawSquar() {
                 ctx.fillStyle = `rgb(${red}, ${green},${blue})`;
                 ctx.fillRect(x, y, squareSize, squareSize);
-                if (x < 500 - squareSize && !turnX) {
+                if (x < canvasSize - squareSize && !turnX) {
                     x += getRandomInt(randomXSpeed);
                 } else {
                     turnX = true
                     x -= getRandomInt(randomXSpeed);
                     if (x < 0) turnX = false;
                 }
-                if (y < 500 - squareSize && !turnY) {
+                if (y < canvasSize - squareSize && !turnY) {
                     y += getRandomInt(randomYSpeed);
                 } else {
                     turnY = true;
