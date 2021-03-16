@@ -13,9 +13,10 @@
 
 <body>
     <button type="button" class="btn btn-outline-dark" style="margin: 20px" href=><a href="index.html">Home</a></button>
-    <canvas id="myCanvas1" width="500px" height="500px"></canvas>
-    <canvas id="myCanvas2" width="500px" height="500px"></canvas>
-    <div class="inputs">
+    <canvas id="myCanvas1"> Your browser does not support Canvas API.
+    </canvas>
+
+    <div class="inputs1">
         <div>
             <input type="number" name="squareSize" id="squareSizeInput" placeholder="SQUARESIZE">
             <button id="squareSizeBtn" class="btn btn-outline-dark">setSquareSize</button>
@@ -32,14 +33,51 @@
         </div>
         <div>
             <button id="clearMyCanvas1" class="btn btn-outline-dark">Clear</button>
+            <h2>click in the canvas</h2>
+        </div>
+
+        <canvas id="myCanvas2"> Your browser does not support Canvas API. </canvas>
+        <div class="inputs2">
+
         </div>
     </div>
     <script>
+
         firstCanvas();
         secondCanvas();
         function secondCanvas() {
-            let ctx = document.getElementById("myCanvas2").getContext("3d");
+            let ctx = document.getElementById("myCanvas2").getContext("2d");
+            ctx.canvas.width = 500;
+            ctx.canvas.height = 500;
+            radius = 10;
+            let drawingLength = 0.5;
+            let randomBackgroundColor = `rgb(${getRandomInt(255)}, ${getRandomInt(255)},${getRandomInt(255)})`
+            ctx.fillStyle = randomBackgroundColor;
+            ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
 
+            clearCircle();
+
+
+            ctx.canvas.addEventListener("mousemove", e => {
+
+                drawCircle(e.offsetX, e.offsetY);
+
+
+            })
+            function drawCircle(offsetX, offsetY) {
+                ctx.fillStyle = 'white';
+                ctx.beginPath();
+                ctx.arc(offsetX, offsetY, radius, 0, 2 * Math.PI);
+                ctx.fill();
+                setTimeout(function () { clearCircle(offsetX, offsetY, radius) }, drawingLength * 1000)
+            }
+            function clearCircle(offsetX, offsetY) {
+                ctx.fillStyle = randomBackgroundColor;
+                let radius = 50;
+                ctx.beginPath();
+                ctx.arc(offsetX, offsetY, radius, 0, 2 * Math.PI);
+                ctx.fill();
+            }
         }
         function firstCanvas() {
             let ctx = document.getElementById("myCanvas1").getContext("2d");
@@ -47,19 +85,12 @@
             xSpeedBtn = document.getElementById("xSpeedBtn");
             ySpeedBtn = document.getElementById("ySpeedBtn");
             clearCanvasBtn = document.getElementById("clearMyCanvas1");
-
-            let x = 200;
-            let y = 200;
-            let red = 0;
-            let green = 0;
-            let blue = 0;
-            let turnX = false;
-            let turnY = false;
-            let squareSize = 50;
+            let squareSize = 10;
             let randomXSpeed = 8;
             let randomYSpeed = 4;
-            let canvasSize = 500;
-            drawSquar();
+            let cancle = false;
+            ctx.canvas.width = 500;
+            ctx.canvas.height = 500;
 
             squareSizeBtn.addEventListener("click", () => {
                 squareSize = document.getElementById("squareSizeInput").value;
@@ -71,44 +102,73 @@
                 randomYSpeed = document.getElementById("ySpeedInput").value;
             })
 
-            clearCanvasBtn.addEventListener("click", () => {
-                ctx.clearRect(0, 0, canvasSize, canvasSize);
+            clearCanvasBtn.addEventListener("mousemove", () => {
+                ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
             })
-       
+
+            clearCanvasBtn.addEventListener("click", () => {
+                cancle = true;
+            })
+
+            
 
 
-            function getRandomInt(max) {
-                return Math.floor(Math.random() * Math.floor(max));
-            }
+            ctx.canvas.addEventListener("click", e => {
+                createSquare(e.offsetX, e.offsetY);
+            })
 
-            function drawSquar() {
-                ctx.fillStyle = `rgb(${red}, ${green},${blue})`;
-                ctx.fillRect(x, y, squareSize, squareSize);
-                if (x < canvasSize - squareSize && !turnX) {
-                    x += getRandomInt(randomXSpeed);
-                } else {
-                    turnX = true
-                    x -= getRandomInt(randomXSpeed);
-                    if (x < 0) turnX = false;
+            function createSquare(x = 200, y = 200) {
+                let red = 0;
+                let green = 0;
+                let blue = 0;
+                let turnX = false;
+                let turnY = false;
+                drawSquare();
+
+
+
+                function drawSquare(intitialX, intitialY) {
+
+
+                    ctx.fillStyle = `rgb(${red}, ${green},${blue})`;
+                    ctx.fillRect(x, y, squareSize, squareSize);
+                    if (x < ctx.canvas.height - squareSize && !turnX) {
+                        x += getRandomInt(randomXSpeed);
+                    } else {
+                        turnX = true
+                        x -= getRandomInt(randomXSpeed);
+                        if (x < 0) turnX = false;
+                    }
+                    if (y < ctx.canvas.width - squareSize && !turnY) {
+                        y += getRandomInt(randomYSpeed);
+                    } else {
+                        turnY = true;
+                        y -= getRandomInt(randomYSpeed);
+                        if (y < 0) turnY = false;
+                    }
+                    red = getRandomInt(255);
+                    green = getRandomInt(255);
+                    blue = getRandomInt(255);
+                    animationFrameId = window.requestAnimationFrame(drawSquare);
+
+                    if(cancle) {
+                        window.cancelAnimationFrame(animationFrameId);
+                        cancle = false;
+                    }
                 }
-                if (y < canvasSize - squareSize && !turnY) {
-                    y += getRandomInt(randomYSpeed);
-                } else {
-                    turnY = true;
-                    y -= getRandomInt(randomYSpeed);
-                    if (y < 0) turnY = false;
-                }
-                red = getRandomInt(255);
-                green = getRandomInt(255);
-                blue = getRandomInt(255);
-                window.requestAnimationFrame(drawSquar);
             }
+        }
+
+        function getRandomInt(max) {
+            return Math.floor(Math.random() * Math.floor(max));
         }
 
 
 
 
     </script>
+
+
 </body>
 
 </html>

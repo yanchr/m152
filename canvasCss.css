@@ -4,10 +4,15 @@
     top: 200px;
 }
 
-.inputs{
+.inputs1{
     position: absolute;
     top: 30px;
     left: 150px;
+}
+
+.inputs1 h2{
+    float: right;
+    margin-left: 30px;
 }
 
 #myCanvas2{
@@ -16,3 +21,10 @@
     top: 200px;
     left: 800px;
 }
+
+.inputs2{
+    position: absolute;
+    top: 30px;
+    left: 350px;
+}
+
