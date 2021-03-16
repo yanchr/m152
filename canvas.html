@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>CNAVAS</title>
+</head>
+
+<body>
+    <button type="button" class="btn btn-outline-dark" style="margin: 20px" href=><a href="index.html">Home</a></button>
+    <canvas id="myCanvas" width="500px" height="500px"
+        style="border: 1px solid black; position: absolute; top: 100px;"></canvas>
+    <script>
+        firstCanvas();
+        function firstCanvas() {
+            let ctx = document.getElementById("myCanvas").getContext("2d");
+            ctx.co
+            let x = 0;
+            let y = 0;
+            let red = 0;
+            let green = 0;
+            let blue = 0;
+            let turnX = false;
+            let turnY = false;
+            let squareSize = 50;
+            drawSquar();
+
+
+            function getRandomInt(max) {
+                return Math.floor(Math.random() * Math.floor(max));
+            }
+
+            function drawSquar() {
+                ctx.fillStyle = `rgb(${red}, ${green},${blue})`;
+                ctx.fillRect(x, y, squareSize, squareSize);
+                if (x < 500 - squareSize && !turnX) {
+                    x += getRandomInt(5);
+                    console.log("test")
+                } else {
+                    turnX = true
+                    x -= getRandomInt(5);
+                    if (x < 0) turnX = false;
+                }
+                if (y < 500 - squareSize && !turnY) {
+                    y += getRandomInt(3);
+                } else {
+                    turnY = true;
+                    y -= getRandomInt(3);
+                    if (y < 0) turnY = false;
+                }
+                red = getRandomInt(255);
+                green = getRandomInt(255);
+                blue = getRandomInt(255);
+                window.requestAnimationFrame(drawSquar);
+            }
+        }
+
+
+
+
+    </script>
+</body>
+
+</html>
