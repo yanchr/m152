@@ -17,7 +17,7 @@
     <canvas id="myCanvas1"> Your browser does not support Canvas API.
     </canvas>
 
-   
+
     <div id="drawingCanvases"></div>
     <div class="inputs1">
         <h3>Manage flying rainbows</h3>
@@ -37,6 +37,16 @@
         </div>
         <div>
             <button id="clearMyCanvas1" class="btn btn-outline-dark">Clear</button>
+
+            <label class="label">
+                <div class="toggle">
+                    <input id="goToMouseMoverToggle" class="toggle-state" type="checkbox" name="check" value="check" />
+                    <div class="indicator"></div>
+                </div>
+                <div class="label-text">hover</div>
+
+            </label>
+
             <h2>click in the canvas</h2>
         </div>
     </div>
@@ -44,11 +54,11 @@
         <h3>Manage drawing boxes</h3>
         <label class="label">
             <div class="toggle">
-              <input id="drawToggle" class="toggle-state" type="checkbox" name="check" value="check" />
-              <div class="indicator"></div>
+                <input id="drawToggle" class="toggle-state" type="checkbox" name="check" value="check" />
+                <div class="indicator"></div>
             </div>
             <div class="label-text">draw</div>
-          </label>
+        </label>
         <div>
             <input type="number" id="sizeOfBoxInput" placeholder="Size of Box in px">
             <button id="sizeOfBoxBtn" class="btn btn-outline-dark">set Size</button>
@@ -68,31 +78,31 @@
         <h3>Manage removing Drawing</h3>
         <label class="label">
             <div class="toggle">
-              <input id="clearToggle" class="toggle-state" type="checkbox" name="check" value="check" />
-              <div class="indicator"></div>
+                <input id="clearToggle" class="toggle-state" type="checkbox" name="check" value="check" />
+                <div class="indicator"></div>
             </div>
             <div class="label-text">clear</div>
-          </label>
+        </label>
 
-          <label class="label">
+        <label class="label">
             <div class="toggle">
-              <input id="strokeToggle" class="toggle-state" type="checkbox" name="check" value="check" />
-              <div class="indicator"></div>
+                <input id="strokeToggle" class="toggle-state" type="checkbox" name="check" value="check" />
+                <div class="indicator"></div>
             </div>
             <div class="label-text">stroke</div>
-          </label>
+        </label>
 
-          <label class="label">
+        <label class="label">
             <div class="toggle">
-              <input id="insideToggle" class="toggle-state" type="checkbox" name="check" value="check" />
-              <div class="indicator"></div>
+                <input id="insideToggle" class="toggle-state" type="checkbox" name="check" value="check" />
+                <div class="indicator"></div>
             </div>
             <div class="label-text">inside</div>
             <button id="clearFieldBtn" class="btn btn-outline-dark">clearField</button>
 
-          </label>
-          
-          
+        </label>
+
+
     </div>
 
 
@@ -106,16 +116,11 @@
         let insideToggle = document.getElementById("insideToggle");
         let clearFieldBtn = document.getElementById("clearFieldBtn");
         let drawToggle = document.getElementById("drawToggle");
+        let goToMouseMoverToggle = document.getElementById("goToMouseMoverToggle");
         drawToggle.checked = true;
         clearToggle.checked = true;
 
-        
-
-        
-
-
         firstCanvas();
-
         backgroundCanvas();
 
         function backgroundCanvas() {
@@ -140,12 +145,12 @@
             })
 
             clearFieldBtn.addEventListener("click", () => {
-            ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
-        });
+                ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+            });
 
 
             ctx.canvas.addEventListener("mousemove", e => {
-                if(drawToggle.checked){
+                if (drawToggle.checked) {
                     drawCircle(ctx, e.offsetX, e.offsetY, "black", "white");
                 }
             });
@@ -156,6 +161,7 @@
 
 
         }
+      
         function secondCanvas(top, left, width, height) {
             let canvas = document.createElement("canvas");
             let ctx = canvas.getContext("2d");
@@ -174,15 +180,16 @@
             ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
 
             ctx.canvas.addEventListener("mousemove", e => {
-                if(drawToggle.checked){
-                drawCircle(ctx, e.offsetX, e.offsetY, reverseRandomBackgroundColor, randomBackgroundColor);
+                if (drawToggle.checked) {
+                    drawCircle(ctx, e.offsetX, e.offsetY, reverseRandomBackgroundColor, randomBackgroundColor);
                 }
             })
 
             ctx.canvas.addEventListener("dblclick", () => {
-                document.getElementById("drawingCanvases").removeChild(canvas)                
+                document.getElementById("drawingCanvases").removeChild(canvas)
             })
         }
+
         function drawCircle(ctx, offsetX, offsetY, drawingColor, backgroundColor) {
             ctx.fillStyle = drawingColor;
             ctx.beginPath();
@@ -190,15 +197,16 @@
             ctx.fill();
             setTimeout(function () { clearCircle(ctx, offsetX, offsetY, backgroundColor) }, drawingLength * 1000)
         }
+
         function clearCircle(ctx, offsetX, offsetY, backgroundColor) {
-   
+
             ctx.fillStyle = backgroundColor;
             ctx.beginPath();
 
 
             if (insideToggle.checked == true) {
                 ctx.arc(offsetX, offsetY, radius * 0.2, 0, 2 * Math.PI);
-            }else{
+            } else {
                 ctx.arc(offsetX, offsetY, radius * 1.1, 0, 2 * Math.PI);
             }
 
@@ -206,11 +214,11 @@
                 ctx.fill();
                 strokeToggle.checked == true
             }
-            if(strokeToggle.checked == true) {
+            if (strokeToggle.checked == true) {
                 ctx.stroke();
                 clearToggle.checked == false
             }
-            
+
         }
 
         function firstCanvas() {
@@ -249,9 +257,12 @@
                 createSquare(e.offsetX, e.offsetY);
             })
 
-            /* ctx.canvas.addEventListener("mousemove", e => {
-                 createSquare(e.offsetX, e.offsetY);
-             }); */
+            ctx.canvas.addEventListener("mousemove", e => {
+                if (goToMouseMoverToggle.checked) {
+                    createSquare(e.offsetX, e.offsetY);
+                }
+            });
+
 
             function createSquare(x = 200, y = 200) {
                 let red = 0;
@@ -288,7 +299,9 @@
                     animationFrameId = window.requestAnimationFrame(drawSquare);
 
                     if (cancle) {
-                        window.cancelAnimationFrame(animationFrameId);
+                        do{
+                            window.cancelAnimationFrame(animationFrameId);
+                        }while (animationFrameId--);
                         cancle = false;
                     }
                 }
@@ -298,10 +311,7 @@
         function getRandomInt(max) {
             return Math.floor(Math.random() * Math.floor(max));
         }
-
-
-
-
+        
     </script>
 
 
