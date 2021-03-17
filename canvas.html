@@ -8,15 +8,19 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="canvasCss.css">
-    <title>CNAVAS</title>
+    <title>CANAVAS</title>
 </head>
 
 <body>
+    <canvas id="myCanvasBackground"> Your browser does not support Canvas API. </canvas>
     <button type="button" class="btn btn-outline-dark" style="margin: 20px" href=><a href="index.html">Home</a></button>
     <canvas id="myCanvas1"> Your browser does not support Canvas API.
     </canvas>
 
+   
+    <div id="drawingCanvases"></div>
     <div class="inputs1">
+        <h3>Manage flying rainbows</h3>
         <div>
             <input type="number" name="squareSize" id="squareSizeInput" placeholder="SQUARESIZE">
             <button id="squareSizeBtn" class="btn btn-outline-dark">setSquareSize</button>
@@ -35,50 +39,180 @@
             <button id="clearMyCanvas1" class="btn btn-outline-dark">Clear</button>
             <h2>click in the canvas</h2>
         </div>
-
-        <canvas id="myCanvas2"> Your browser does not support Canvas API. </canvas>
-        <div class="inputs2">
-
-        </div>
     </div>
+    <div class="inputs2">
+        <h3>Manage drawing boxes</h3>
+        <label class="label">
+            <div class="toggle">
+              <input id="drawToggle" class="toggle-state" type="checkbox" name="check" value="check" />
+              <div class="indicator"></div>
+            </div>
+            <div class="label-text">draw</div>
+          </label>
+        <div>
+            <input type="number" id="sizeOfBoxInput" placeholder="Size of Box in px">
+            <button id="sizeOfBoxBtn" class="btn btn-outline-dark">set Size</button>
+        </div>
+        <div>
+            <input type="number" id="radiusOfDrawingInput" placeholder="radius of drawing in px">
+            <button id="radiusOfDrawingBtn" class="btn btn-outline-dark">set Radius</button>
+        </div>
+        <div>
+            <input type="number" id="lengthOfDrawingInput" placeholder="lenght of Drawing in s">
+            <button id="lengthOfDrawingBtn" class="btn btn-outline-dark">set Length</button>
+        </div>
+
+    </div>
+
+    <div class="manageRemovingDrawing">
+        <h3>Manage removing Drawing</h3>
+        <label class="label">
+            <div class="toggle">
+              <input id="clearToggle" class="toggle-state" type="checkbox" name="check" value="check" />
+              <div class="indicator"></div>
+            </div>
+            <div class="label-text">clear</div>
+          </label>
+
+          <label class="label">
+            <div class="toggle">
+              <input id="strokeToggle" class="toggle-state" type="checkbox" name="check" value="check" />
+              <div class="indicator"></div>
+            </div>
+            <div class="label-text">stroke</div>
+          </label>
+
+          <label class="label">
+            <div class="toggle">
+              <input id="insideToggle" class="toggle-state" type="checkbox" name="check" value="check" />
+              <div class="indicator"></div>
+            </div>
+            <div class="label-text">inside</div>
+            <button id="clearFieldBtn" class="btn btn-outline-dark">clearField</button>
+
+          </label>
+          
+          
+    </div>
+
+
+
     <script>
+        let radius = 10;
+        let drawingLength = 0.5;
+
+        let clearToggle = document.getElementById("clearToggle");
+        let strokeToggle = document.getElementById("strokeToggle");
+        let insideToggle = document.getElementById("insideToggle");
+        let clearFieldBtn = document.getElementById("clearFieldBtn");
+        let drawToggle = document.getElementById("drawToggle");
+        drawToggle.checked = true;
+        clearToggle.checked = true;
+
+        
+
+        
+
 
         firstCanvas();
-        secondCanvas();
-        function secondCanvas() {
-            let ctx = document.getElementById("myCanvas2").getContext("2d");
-            ctx.canvas.width = 500;
-            ctx.canvas.height = 500;
-            radius = 10;
-            let drawingLength = 0.5;
-            let randomBackgroundColor = `rgb(${getRandomInt(255)}, ${getRandomInt(255)},${getRandomInt(255)})`
-            ctx.fillStyle = randomBackgroundColor;
-            ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
 
-            clearCircle();
+        backgroundCanvas();
+
+        function backgroundCanvas() {
+            let ctx = document.getElementById("myCanvasBackground").getContext("2d");
+            sizeOfBoxBtn = document.getElementById("sizeOfBoxBtn");
+            radiusOfDrawingBtn = document.getElementById("radiusOfDrawingBtn");
+            lengthOfDrawingBtn = document.getElementById("lengthOfDrawingBtn");
+
+            ctx.fillStyle = "black";
+            ctx.canvas.width = 2000;
+            ctx.canvas.height = 1000;
+            let size = 200;
+
+            sizeOfBoxBtn.addEventListener("click", () => {
+                size = document.getElementById("sizeOfBoxInput").value * 10;
+            })
+            radiusOfDrawingBtn.addEventListener("click", () => {
+                radius = document.getElementById("radiusOfDrawingInput").value;
+            })
+            lengthOfDrawingBtn.addEventListener("click", () => {
+                drawingLength = document.getElementById("lengthOfDrawingInput").value;
+            })
+
+            clearFieldBtn.addEventListener("click", () => {
+            ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+        });
 
 
             ctx.canvas.addEventListener("mousemove", e => {
+                if(drawToggle.checked){
+                    drawCircle(ctx, e.offsetX, e.offsetY, "black", "white");
+                }
+            });
 
-                drawCircle(e.offsetX, e.offsetY);
+            ctx.canvas.addEventListener("dblclick", e => {
+                secondCanvas(e.offsetY - size / 3, e.offsetX - size, size, size);
+            });
 
 
-            })
-            function drawCircle(offsetX, offsetY) {
-                ctx.fillStyle = 'white';
-                ctx.beginPath();
-                ctx.arc(offsetX, offsetY, radius, 0, 2 * Math.PI);
-                ctx.fill();
-                setTimeout(function () { clearCircle(offsetX, offsetY, radius) }, drawingLength * 1000)
-            }
-            function clearCircle(offsetX, offsetY) {
-                ctx.fillStyle = randomBackgroundColor;
-                let radius = 50;
-                ctx.beginPath();
-                ctx.arc(offsetX, offsetY, radius, 0, 2 * Math.PI);
-                ctx.fill();
-            }
         }
+        function secondCanvas(top, left, width, height) {
+            let canvas = document.createElement("canvas");
+            let ctx = canvas.getContext("2d");
+            canvas.id = "myCanvas2";
+            document.getElementById("drawingCanvases").appendChild(canvas)
+            ctx.canvas.width = width;
+            ctx.canvas.height = height;
+            ctx.canvas.style.top = `${top}px`;
+            ctx.canvas.style.left = `${left}px`;
+            red = getRandomInt(255);
+            green = getRandomInt(255);
+            blue = getRandomInt(255);
+            let randomBackgroundColor = `rgb(${red}, ${green},${blue})`
+            let reverseRandomBackgroundColor = `rgb(${255 - red}, ${255 - green},${255 - blue})`
+            ctx.fillStyle = randomBackgroundColor;
+            ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+
+            ctx.canvas.addEventListener("mousemove", e => {
+                if(drawToggle.checked){
+                drawCircle(ctx, e.offsetX, e.offsetY, reverseRandomBackgroundColor, randomBackgroundColor);
+                }
+            })
+
+            ctx.canvas.addEventListener("dblclick", () => {
+                document.getElementById("drawingCanvases").removeChild(canvas)                
+            })
+        }
+        function drawCircle(ctx, offsetX, offsetY, drawingColor, backgroundColor) {
+            ctx.fillStyle = drawingColor;
+            ctx.beginPath();
+            ctx.arc(offsetX, offsetY, radius, 0, 2 * Math.PI);
+            ctx.fill();
+            setTimeout(function () { clearCircle(ctx, offsetX, offsetY, backgroundColor) }, drawingLength * 1000)
+        }
+        function clearCircle(ctx, offsetX, offsetY, backgroundColor) {
+   
+            ctx.fillStyle = backgroundColor;
+            ctx.beginPath();
+
+
+            if (insideToggle.checked == true) {
+                ctx.arc(offsetX, offsetY, radius * 0.2, 0, 2 * Math.PI);
+            }else{
+                ctx.arc(offsetX, offsetY, radius * 1.1, 0, 2 * Math.PI);
+            }
+
+            if (clearToggle.checked == true) {
+                ctx.fill();
+                strokeToggle.checked == true
+            }
+            if(strokeToggle.checked == true) {
+                ctx.stroke();
+                clearToggle.checked == false
+            }
+            
+        }
+
         function firstCanvas() {
             let ctx = document.getElementById("myCanvas1").getContext("2d");
             squareSizeBtn = document.getElementById("squareSizeBtn");
@@ -110,12 +244,14 @@
                 cancle = true;
             })
 
-            
-
-
+            // add Squares
             ctx.canvas.addEventListener("click", e => {
                 createSquare(e.offsetX, e.offsetY);
             })
+
+            /* ctx.canvas.addEventListener("mousemove", e => {
+                 createSquare(e.offsetX, e.offsetY);
+             }); */
 
             function createSquare(x = 200, y = 200) {
                 let red = 0;
@@ -151,7 +287,7 @@
                     blue = getRandomInt(255);
                     animationFrameId = window.requestAnimationFrame(drawSquare);
 
-                    if(cancle) {
+                    if (cancle) {
                         window.cancelAnimationFrame(animationFrameId);
                         cancle = false;
                     }
