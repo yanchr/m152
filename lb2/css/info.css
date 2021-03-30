@@ -1,0 +1,25 @@
+h1{
+    position: absolute;
+    color: white;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+}
+
+h3 {
+    position: absolute;
+    color: white;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-200%);
+}
+
+.background {
+    position: absolute;
+    height: 110vh;
+    z-index: -1;
+    background-repeat: repeat-x;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+}

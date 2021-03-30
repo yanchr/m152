@@ -1,0 +1,55 @@
+{
+	"1": {
+        "years": -4600000000,
+		"title": "Planet Earth formed",
+		"text": "This is how the Planet Earth formed",
+        "jsonName": "test1Json"
+	},
+    "2": {
+		"years": -4500000000,
+		"title": "Earth's core and crust formed",
+        "image": "earthCrust.jpg"
+	},
+    "3": {
+		"years": -4400000000,
+		"title": "The Earth's first oceans formed."
+	},
+    "4": {
+		"years": -3850000000,
+		"title": " The first life appeared on Earth"
+	},
+    "5": {
+		"years": -1500000000,
+		"title": "Oxygen began to accumulate in the Earth's atmosphere"
+	},
+    "6": {
+		"years": -700000000,
+		"title": "The first animals evolved."
+	},
+    "7": {
+		"years": -530000000,
+		"title": "The first land plants evolved."
+	},
+    "8": {
+		"years": -400000000,
+		"title": "The first land plants evolved."
+	},
+    "9": {
+		"years": -350000000,
+		"title": "The first land vertebrates evolved."
+	},
+    "10": {
+		"years": -225000000,
+		"title": "The first dinosaurs evolved from lizards.",
+        "jsonName": "dinosaurs"
+	},
+    "11": {
+		"years": -65000000,
+		"title": "The dinosaurs went extinct."
+	},
+    "12": {
+		"years": -130000,
+		"title": "Modern humans evolved."
+	}
+    
+}
