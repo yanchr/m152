@@ -8,7 +8,8 @@
     "2": {
 		"years": -4500000000,
 		"title": "Earth's core and crust formed",
-        "image": "earthCrust.jpg"
+        "image": "earthCrust.jpg",
+		"text": "The Earth’s crust is its lightest, most buoyant rock layer. Continental crust covers 41percent of the Earth’s surface, though a quarter of that area is under the oceans. The continental crust is 20 to 80 kilometers thick. Its rocks hold four billion years of Earth history. The remainder of the Earth is covered by oceanic crust. This type of crust is young — none older than 170 million years — and is only about 8 kilometers thick."
 	},
     "3": {
 		"years": -4400000000,

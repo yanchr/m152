@@ -21,13 +21,29 @@ if (jsonElement.image) {
     backgroundImg = document.createElement("img");
     backgroundImg.src = `../assets/${jsonElement.image}`;
     backgroundImg.classList = "background";
+    backgroundImg.width = "2000";
+    backgroundImg.heigth = "2000";
+    backgroundImg.scale = 2;
     infoBody.appendChild(backgroundImg);
+
 }
 
 document.onscroll = function(){onScroll()}
 
 function onScroll() {
-    console.log("moin")
+
+        // print "false" if direction is down and "true" if up
+        scrollingDown = this.oldScroll < this.scrollY
+        this.oldScroll = this.scrollY;
+
+            if (scrollingDown && backgroundImg.width > 1000) {
+               backgroundImg.width -= 100;
+               backgroundImg.heigth -= 100;
+            }
+            if (!scrollingDown && backgroundImg.width < 2000) {
+               backgroundImg.width += 100;
+               backgroundImg.heigth += 100;
+            }
 }
 
 

@@ -1,3 +1,4 @@
+AOS.init();
 currentUrl = "./json/defaultJson.json";
 queryString = window.location.search;
 urlParams = new URLSearchParams(queryString);
@@ -16,7 +17,6 @@ getJson(currentUrl)
 .then(data => {
     createTimeLine(data);
 })
-
 
 
 function createTimeLine(results){
@@ -40,31 +40,30 @@ function createTimeLine(results){
     
         if(value.title)  title.innerHTML = value.title;
         if(value.text)  text.innerHTML = value.text;
-        if (value.years) {
+        if (value.years) {  
             years.innerHTML = `${value.years} Years`;
 
             if (value.years < -1000000 || value.years > 1000000) {
                 years.innerHTML = `${value.years / 1000000} Million Years`
+            }else if (value.years < -1000 || value.years > 1000) {
+                years.innerHTML = `${value.years / 1000}K Years`
             }
         }
+
+        containerSide.dataset.aos = "fade-up";
         
         if (value.jsonName){
             TimelineRedirect(value.jsonName);
         } else {
             InfoRedirect(value);
         }
-        
-        contentDiv.appendChild(years);
-        contentDiv.appendChild(title);
-        contentDiv.appendChild(text);
-        containerSide.appendChild(contentDiv);
-        timeline1Div.appendChild(containerSide);
+        contentDiv.append(years, title, text);
+        containerSide.append(contentDiv);
+        timeline1Div.append(containerSide);
     
         i++;
     }
 }
-
-
 
 function TimelineRedirect(urlToJson){
     containerSide.addEventListener("click", () => {

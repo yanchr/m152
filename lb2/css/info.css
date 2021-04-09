@@ -1,3 +1,9 @@
+body{
+    height: 5000px;
+    background-color: #4d4e4d;
+
+}
+
 h1{
     position: absolute;
     color: white;
@@ -21,5 +27,5 @@ h3 {
     background-repeat: repeat-x;
     top: 50%;
     left: 50%;
-    transform: translateX(-50%) translateY(-50%);
-}
+    transform: translateX(-50%) translateY(-50%);}
+
