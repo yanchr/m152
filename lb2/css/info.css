@@ -1,31 +1,66 @@
+
 body{
     height: 5000px;
     background-color: #4d4e4d;
-
 }
 
 h1{
-    position: absolute;
+    position: fixed;
     color: white;
     top: 50%;
     left: 50%;
     transform: translateX(-50%) translateY(-50%);
+
+    animation: h1-animation 1s linear;
+    animation-play-state: paused;
+    animation-delay: calc(var(--scroll) * -1s);
+  
+    animation-fill-mode: both;
 }
 
 h3 {
-    position: absolute;
+    position: fixed;
     color: white;
     top: 50%;
     left: 50%;
     transform: translateX(-50%) translateY(-200%);
+
+    animation: h3-animation 1s linear;
+    animation-play-state: paused;
+    animation-delay: calc(var(--scroll) * -1s);
+  
+    animation-fill-mode: both;
 }
 
 .background {
-    position: absolute;
+    position: fixed;
     height: 110vh;
     z-index: -1;
     background-repeat: repeat-x;
     top: 50%;
     left: 50%;
-    transform: translateX(-50%) translateY(-50%);}
+    transform: translateX(-50%) translateY(-50%);
+}
+
+p {
+    position: fixed;
+    color: white;
+    top: 55%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+@keyframes h3-animation {
+    100%{
+        top: 190px;
+        font-size: 30px;
+    }
+  }
+
+  @keyframes h1-animation {
+    100%{
+        top: 80px;
+        font-size: 50px;
+    }
+  }
 

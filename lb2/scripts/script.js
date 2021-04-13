@@ -38,15 +38,18 @@ function createTimeLine(results){
         }
         containerSide.id = `Container${i}`;
     
-        if(value.title)  title.innerHTML = value.title;
-        if(value.text)  text.innerHTML = value.text;
+        if(value.title)  title.innerText = value.title;
+        /* if(value.text){
+            text.innerText = value.text;
+        } */
+            
         if (value.years) {  
-            years.innerHTML = `${value.years} Years`;
+            years.innerText = `${value.years} Years`;
 
             if (value.years < -1000000 || value.years > 1000000) {
-                years.innerHTML = `${value.years / 1000000} Million Years`
+                years.innerText = `${value.years / 1000000} Million Years`
             }else if (value.years < -1000 || value.years > 1000) {
-                years.innerHTML = `${value.years / 1000}K Years`
+                years.innerText = `${value.years / 1000}K Years`
             }
         }
 
