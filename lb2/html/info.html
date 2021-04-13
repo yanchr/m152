@@ -11,6 +11,16 @@
 <body id="infoBody">
     <a href="../timeline.html"><button type="button" class="btn to-home effect01" target="_blank">Home</button></a>
     <div class="timeline" id="timeline"></div>
+    <div class="line"></div>
+    <div id="mouse-follower"></div>
+    <script>
+        followMouseDiv = document.getElementById("mouse-follower");
+        document.addEventListener("mousemove", e => {
+            height = e.clientY + window.pageYOffset;
+            followMouseDiv.style.left = `${e.clientX}px`
+            followMouseDiv.style.top = `${height}px`
+        });
+    </script>
     <script src="../scripts/info.js"></script>
 </body>
 </html>

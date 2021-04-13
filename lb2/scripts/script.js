@@ -19,9 +19,14 @@ getJson(currentUrl)
 })
 
 
+
+
 function createTimeLine(results){
     timeline1Div = document.getElementById("timeline");
     i = 1;
+  
+
+
     for(const [key, value] of Object.entries(results)){
         
         containerSide = document.createElement("div");
@@ -52,6 +57,8 @@ function createTimeLine(results){
                 years.innerText = `${value.years / 1000}K Years`
             }
         }
+
+        
 
         containerSide.dataset.aos = "fade-up";
         

@@ -34,12 +34,19 @@ h3 {
 
 .background {
     position: fixed;
-    height: 110vh;
     z-index: -1;
     background-repeat: repeat-x;
     top: 50%;
     left: 50%;
     transform: translateX(-50%) translateY(-50%);
+    width: 1200px;
+    height: auto;
+
+    animation: image-animation 1s linear;
+    animation-play-state: paused;
+    animation-delay: calc(var(--scroll) * -1s);
+  
+    animation-fill-mode: both;
 }
 
 p {
@@ -48,6 +55,23 @@ p {
     top: 55%;
     left: 50%;
     transform: translateX(-50%);
+
+    animation: p-animation 1s linear;
+    animation-play-state: paused;
+    animation-delay: calc(var(--scroll) * -1s);
+  
+    animation-fill-mode: both;
+}
+
+.line{
+    height: 10000px;
+    width: 1200px;
+    position: fixed;
+    left: 50%;
+    right: 50%;
+    transform: translate(-50%, -50%);
+    border-right-style: solid;
+    border-left-style: solid;
 }
 
 @keyframes h3-animation {
@@ -61,6 +85,36 @@ p {
     100%{
         top: 80px;
         font-size: 50px;
+    }
+  }
+
+  @keyframes p-animation { 
+
+    50% {
+        top: 280px;
+        width: 600px;
+        transform: translateX(-50px) rotate(20deg);
+    }
+
+      100%{
+        top: 180px;
+        width: 500px;
+      }
+  }
+
+  @keyframes image-animation {
+    95%{
+        
+        width: 75px;
+        height: auto;
+        transform: translateX(-200px);
+        top: 20px; 
+    }
+    100%{
+        width: 75px;
+        height: auto;
+        transform: translateX(-200px);
+        top: 25px; 
     }
   }
 

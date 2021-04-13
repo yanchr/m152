@@ -21,8 +21,8 @@ if (jsonElement.image) {
     backgroundImg = document.createElement("img");
     backgroundImg.src = `../assets/${jsonElement.image}`;
     backgroundImg.classList = "background";
-    backgroundImg.width = "2000";
-    backgroundImg.heigth = "2000";
+   // backgroundImg.width = "2000";
+   // backgroundImg.heigth = "2000";
     backgroundImg.scale = 2;
     infoBody.appendChild(backgroundImg);
 
@@ -44,6 +44,7 @@ function onScroll() {
         this.oldScroll = this.scrollY;
         document.body.style.setProperty('--scroll',window.pageYOffset / (document.body.offsetHeight - window.innerHeight));
 
+        /*
             if (scrollingDown && backgroundImg.width > 1000) {
                backgroundImg.width -= 100;
                backgroundImg.heigth -= 100
@@ -52,6 +53,8 @@ function onScroll() {
                backgroundImg.width += 100;
                backgroundImg.heigth += 100;
             }
+
+            */
 }
 
 
