@@ -16,7 +16,11 @@
     <a href="../index.html"><button type="button" class="btn to-index effect01" target="_blank">Index</button></a>
     <a href="./timeline.html"><button type="button" class="btn to-home effect01" target="_blank">Home</button></a>
     <div id="mouse-follower"></div>
-    <div class="timeline" id="timeline"></div>
+    <div class="timeline" id="timeline">
+    </div>
+    <div id="loader">
+        <div id="loading-circle"></div>
+    </div>
     <script>
         followMouseDiv = document.getElementById("mouse-follower");
         document.addEventListener("mousemove", e => {

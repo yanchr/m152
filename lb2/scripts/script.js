@@ -18,6 +18,7 @@ getJson(currentUrl)
     createTimeLine(data);
 })
 
+loaderDiv = document.getElementById("loader");
 
 
 
@@ -77,13 +78,19 @@ function createTimeLine(results){
 
 function TimelineRedirect(urlToJson){
     containerSide.addEventListener("click", () => {
-        window.location.href = `timeline.html?urlToJson=./json/${urlToJson}.json`;
+        loaderDiv.style.animation = "fade-out 1s linear";
+        setTimeout(function(){
+             window.location.href = `timeline.html?urlToJson=./json/${urlToJson}.json`;
+            }, 1000);
     })
 }
 
 function InfoRedirect(value){
     containerSide.addEventListener("click", () => {
-        window.location.href = `./html/info.html`;
-        localStorage.setItem("jsonItem", JSON.stringify(value));
+        loaderDiv.style.animation = "fade-out 1s linear";
+        setTimeout(function(){
+             window.location.href = `./html/info.html`;
+             localStorage.setItem("jsonItem", JSON.stringify(value));
+            }, 1000);
     })
 }

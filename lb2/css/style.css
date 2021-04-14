@@ -326,4 +326,54 @@
     }
   }
 
+  #loader{
+    background-color: rgba(71, 78, 93, 1);
+    height: 100vh;
+    width: 100vw;
+    z-index: -2;
+    position: fixed;
+    animation: loader 2s linear;
+    animation-fill-mode: forwards;
+  }
+
+  #loading-circle{
+    position: absolute;
+    height: 500px;
+    width: 500px;
+    left: 50%;
+    top: 50%;
+    z-index: 15;
+    border: 4px dashed #000;
+    box-sizing: border-box;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    pointer-events: none;
+    overflow: hidden;
+    animation: rotation 5s linear infinite;
+  }
+
+  @keyframes loader{
+    0%{
+      z-index: 5;
+    }
+    20%{
+      opacity:1;
+    }
+    100%{
+      opacity:0;
+      z-index: -2;
+     }
+  }
+
+  @keyframes fade-out{
+    0%{
+      z-index: -2;
+      opacity:0;
+    }
+    100%{
+      opacity:1;
+      z-index: 5;
+    }
+  }
+
   
