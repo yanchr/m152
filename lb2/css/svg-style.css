@@ -1,0 +1,171 @@
+#background-div{
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: -10;
+    width: 50vw;
+    height: auto;
+}
+
+#earth {
+    animation: earth-rotater 80s linear infinite;
+    transform-origin: center;
+    transform-box: fill-box;
+}
+
+@keyframes earth-rotater {
+    0%{
+        transform: rotateZ(0deg);
+    }
+
+    100%{
+        transform: rotateZ(360deg);
+    }
+}
+
+#lense {
+    animation: lense-rotater 5s linear infinite alternate-reverse;
+    transform-origin: bottom;
+    transform-box: fill-box;
+}
+
+
+@keyframes lense-rotater {
+    0%{
+        transform: rotateZ(0deg);
+    }
+
+    100%{
+        transform: rotateZ(50deg);
+    }
+}
+
+#black-pointer {
+    animation: pointer-down 2s linear infinite alternate-reverse;
+}
+
+#white-pointer {
+    animation: pointer-down 2.5s linear infinite alternate-reverse;
+}
+
+#blue-pointer-2 {
+    animation: pointer-down 3s linear infinite alternate-reverse;
+}
+
+
+@keyframes pointer-down {
+    0%{
+        transform: translateY(0px);
+    }
+
+    80% {
+        transform: translateY(0px);
+    }
+
+    100%{
+        transform: translateY(10px);
+    }
+}
+
+#left-man-eye {
+    animation: left-eye 3s linear infinite alternate-reverse;
+}
+
+@keyframes left-eye {
+    0%{
+        transform: translate(0, 0);
+    }
+
+    20%{
+        transform: translate(6px, -6px);
+    }
+
+    30%{
+        transform: translate(4px, -8px);
+    }
+
+    40%{
+        transform: translate(8px, -4px);
+    }
+
+    50%{
+        transform: translate(6px, -6px);
+    }
+
+    100%{
+        transform: translate(6px, -6px);
+    }
+}
+
+
+
+/* #right-man-eye {
+    animation: right-eye 2s linear infinite alternate-reverse;
+}
+
+@keyframes right-eye {
+    0%{
+        transform: translate(0, 0);
+    }
+
+    30%{
+        transform: translate(0, 0);
+    }
+
+    60%{
+        transform: translate(3px, -3px);
+    }
+
+    100%{
+        transform: translate(3px, -3px);
+    }
+} */
+
+#middle-man-right-arm {
+    animation: arm-rotater 5s linear infinite;
+    transform-origin: left 8px;
+    transform-box: fill-box;
+}
+
+@keyframes arm-rotater {
+    0%{
+        transform: rotateZ(0deg);
+    }
+
+    40%{
+        transform: rotateZ(-80deg);
+    }
+
+    50% {
+        transform: rotateZ(-60deg);
+    }
+
+    60%{
+        transform: rotateZ(-80deg);
+    }
+
+    70% {
+        transform: rotateZ(-60deg);
+    }
+
+    100%{
+        transform: rotateZ(0deg);
+    }
+}
+
+#right-man-left-arm {
+    animation: left-arm-rotater 5s linear infinite alternate-reverse;
+    transform-origin: right 8px;
+    transform-box: fill-box;
+}
+
+@keyframes left-arm-rotater {
+    0%{
+        transform: rotateZ(0deg);
+    }
+
+    100%{
+        transform: rotateZ(-40deg);
+    }
+}
+

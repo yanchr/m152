@@ -20,6 +20,19 @@ getJson(currentUrl)
 
 loaderDiv = document.getElementById("loader");
 
+var rightManEye = document.getElementById("right-man-eye");
+document.addEventListener('mousemove', e => {
+    var xEye = (e.clientX * 3 / window.innerWidth) + "%";
+    var yEye = (e.clientY * 3 / window.innerHeight - 0.7) + "%";
+    
+    rightManEye.style.left = xEye;
+    rightManEye.style.top = yEye;
+    console.log(`${xEye} : ${yEye}`)
+    rightManEye.style.transform = "translate("+xEye+","+yEye+")";
+    console.log("mousemove")
+
+});
+
 
 
 function createTimeLine(results){

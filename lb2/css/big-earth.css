@@ -1,0 +1,15 @@
+#big-earth{
+        position: fixed;
+ /*        left: 1200px;
+        top: 200px; */
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        z-index: -10;
+        width: 25vw;
+        height: auto;
+
+        animation: big-earth-rotater 80s linear infinite;
+        transform-origin: center;
+        transform-box: fill-box;
+}
