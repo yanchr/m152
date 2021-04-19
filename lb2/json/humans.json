@@ -1,0 +1,38 @@
+{
+    "1": {
+        "years": -5800000,
+        "title": "oldest human",
+        "text": "Orrorin tugenensis, oldest human ancestor thought to have walked on two legs"
+    },
+    "2": {
+        "years": -5500000,
+        "title": "proto-human",
+        "text": "Ardipithecus, early “proto-human” shares traits with chimps and gorillas, and is forest-dwelling"
+    },
+    "3": {
+        "years": -4000000,
+        "title": "Australopithecines",
+        "text": "Australopithecines appear. They have brains no larger than a chimpanzee’s – with a volume around 400 – 500 cm3 -, but walk upright on two legs. First human ancestors to live on the savannah"
+    },
+    "4": {
+        "years": -3200000,
+        "title": "Australopithecus afarensis",
+        "text": "Lucy, famous specimen of Australopithecus afarensis, lives near what is now Hadar, Ethiopia"
+    },
+    "5": {
+        "years": -2700000,
+        "title": "Paranthropus",
+        "text": "Paranthropus, lives in woods and grasslands, has massive jaws for chewing on roots and vegetation. Becomes extinct 1.2 MYA"
+    },
+    "6": {
+        "years": -2500000,
+        "title": "Homo habilis",
+        "text": "Homo habilis appears. Its face protrudes less than earlier hominids, but still retains many ape features. Has a brain volume of around 600 cm3"
+    },
+    "7": {
+        "years": -195000,
+        "title": "Homo Sapiens",
+        "jsonName": "homo-sapiens",
+        "text": "Our own species Homo sapiens appears on the scene – and shortly after begins to migrate across Asia and Europe. Oldest modern human remains are two skulls found in Ethiopia that date to this period. Average human brain volume is 1350 cm3"
+    }
+}

@@ -27,9 +27,7 @@ document.addEventListener('mousemove', e => {
     
     rightManEye.style.left = xEye;
     rightManEye.style.top = yEye;
-    console.log(`${xEye} : ${yEye}`)
     rightManEye.style.transform = "translate("+xEye+","+yEye+")";
-    console.log("mousemove")
 
 });
 

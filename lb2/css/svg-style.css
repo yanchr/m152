@@ -132,7 +132,7 @@
         transform: rotateZ(0deg);
     }
 
-    40%{
+    45%{
         transform: rotateZ(-80deg);
     }
 
@@ -140,7 +140,15 @@
         transform: rotateZ(-60deg);
     }
 
-    60%{
+    55%{
+        transform: rotateZ(-80deg);
+    }
+
+    60% {
+        transform: rotateZ(-60deg);
+    }
+
+    65%{
         transform: rotateZ(-80deg);
     }
 

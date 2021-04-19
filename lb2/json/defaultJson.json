@@ -13,7 +13,8 @@
 	},
     "3": {
 		"years": -4400000000,
-		"title": "The Earth's first oceans formed."
+		"title": "The Earth's first oceans formed.",
+		"image": "ocean-water.webp"
 	},
     "4": {
 		"years": -3850000000,
@@ -49,8 +50,9 @@
 		"title": "The dinosaurs went extinct."
 	},
     "12": {
-		"years": -130000,
-		"title": "Modern humans evolved."
+		"years": -5800000,
+		"title": "first humans evolved.",
+		"jsonName": "humans"
 	}
     
 }

@@ -1,7 +1,8 @@
 {
     "1": {
         "years": -251000000,
-        "title": "The TRIASSIC Period Starts"
+        "title": "The TRIASSIC Period Starts",
+        "image": "pterosaurus.png"
     },
     "2": {
         "years": -225000000,
@@ -21,7 +22,9 @@
     },
     "6": {
         "years": -125000000,
-        "title": "LATE CRETACEOUS"
+        "title": "LATE CRETACEOUS",
+        "image": "t-rex.png",
+        "text": "This Time was the time of the T-Rex"
     },
     "7": {
         "years": -65000000,

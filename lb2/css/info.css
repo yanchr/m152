@@ -42,7 +42,7 @@ h3 {
     width: 1200px;
     height: auto;
 
-    animation: image-animation 1s linear;
+    animation: image-animation 1s ease-in;
     animation-play-state: paused;
     animation-delay: calc(var(--scroll) * -1s);
   
@@ -103,12 +103,30 @@ p {
   }
 
   @keyframes image-animation {
-    95%{
+    80%{
         
         width: 75px;
         height: auto;
         transform: translateX(-200px);
-        top: 20px; 
+        top: 10px; 
+    }
+    85%{
+        top: 40px; 
+    }
+    90%{
+        top: 15px; 
+    }
+    92%{
+        top: 35px; 
+    }
+    94%{
+        top: 18px; 
+    }
+    96%{
+        top: 30px; 
+    }
+    98%{
+        top: 22px; 
     }
     100%{
         width: 75px;
