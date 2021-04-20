@@ -9,6 +9,7 @@ h1{
     top: 50%;
     left: 50%;
     transform: translateX(-50%) translateY(-50%);
+    font-size: 30px;
 
     animation: h1-animation 1s linear;
     animation-play-state: paused;
@@ -23,7 +24,7 @@ h3 {
     top: 50%;
     left: 50%;
     transform: translateX(-50%) translateY(-200%);
-
+    font-size: 18px;
     animation: h3-animation 1s linear;
     animation-play-state: paused;
     animation-delay: calc(var(--scroll) * -1s);
