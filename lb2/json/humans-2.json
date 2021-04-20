@@ -1,0 +1,31 @@
+{
+    "1": {
+        "years": -2800000,
+        "title": "homos - forst humans evolved" 
+    },
+    "2": {
+        "years": -200000,
+        "title": "homo sapiens sapiens - evolved" 
+    }, 
+    "3": {
+        "title": "learned fire"
+    },
+    "4": {
+        "years": -300000,
+        "title": "humans spoke to eatchother",
+        "text": "had fire, cultures, lived in small hunt societies."
+    },
+    "5":  {
+        "years": -50000,
+        "title": "explostion in innovations",
+        "text": "tootls, wapons, culutre, more advantage language. this allowed us to cooperate better. we could give knowlede to children."
+    },
+    "6": {
+        "years": -12000,
+        "title": "accriculture"
+    },
+    "7": {
+        "years": -500,
+        "title": "mathematics, phisics, biology, chemistry started"
+    }
+}
